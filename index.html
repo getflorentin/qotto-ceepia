@@ -4,228 +4,242 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta property="og:title" content="Qotto × Ceepia · Quelques pistes IA">
-<meta property="og:description" content="Une lecture de Qotto et quatre pistes où l'IA peut aider un opérateur solaire en paiement à l'usage.">
-<title>Qotto × Ceepia</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<meta property="og:title" content="Qotto × ceepia · Ce que l'IA pourrait faire pour vous">
+<meta property="og:description" content="Gains rapides, grandes idées et une démo : des pistes IA pour un opérateur solaire en paiement à l'usage.">
+<title>Qotto × ceepia</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
 <style>
 :root{
-  --orange:#e54415; --orange-ink:#b8330c; --orange-soft:#fdebe4;
-  --slate:#343e47; --slate-2:#4b5761;
-  --bg:#f3f4f5; --surface:#ffffff; --ink:#1f262c; --muted:#5f6a73; --line:#d9dde0;
-  --ok:#2f7d4f; --ok-soft:#e3f2e8; --warn:#a86a00; --warn-soft:#fbefd6; --bad:#b3261e; --bad-soft:#fbe4e2;
-  --on-dark:#ffffff; --on-dark-muted:#c9d0d6;
-  --display:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --cyan:#00aeef; --cyan-ink:#0077a8; --cyan-soft:#e3f6fd;
+  --orange:#f26522; --orange-ink:#c2470c; --orange-soft:#fff2eb;
+  --yellow:#ffc83d; --yellow-soft:#fff6db;
+  --ink:#3c3c3b; --muted:#6b6f75; --line:#ecdcd3; --white:#fff;
+  --ok:#2e8b4e; --ok-soft:#e4f4ea; --bad:#d63637; --bad-soft:#fde6e6;
+  --font:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
-img{max-width:100%}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
-.in{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.05;text-wrap:balance;margin:0}
-h2{font-size:clamp(1.5rem,3.2vw,2.1rem);text-transform:uppercase;letter-spacing:.01em}
-h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.02em}
+body{background:var(--white);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.65;font-weight:300}
+b,strong{font-weight:600}
+.in{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-weight:700;line-height:1.12;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.7rem,3.6vw,2.6rem);color:var(--cyan)}
+h3{font-size:1.12rem;color:var(--ink)}
 p{margin:0}
-.lede{max-width:64ch;color:var(--muted);font-size:1.05rem}
-.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
-.mono{font-family:var(--mono)}
+.lede{max-width:62ch;color:var(--muted);font-size:1.05rem;margin-top:12px}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--orange)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--orange);color:var(--orange);background:transparent;border-radius:999px;padding:12px 28px;font:inherit;font-weight:600;text-decoration:none}
+.btn.fill{background:var(--orange);color:#fff}
+.btn.white{border-color:#fff;color:#fff}
 
-.topband{background:var(--orange);color:#fff;font-size:.88rem;text-align:center;padding-block:10px}
-.navband{background:#fff;border-bottom:1px solid var(--line)}
-.navband .in{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:12px}
-.wm{font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:.02em;color:var(--slate);border-bottom:4px solid var(--orange);line-height:1;padding-bottom:3px}
-.navband .with{display:flex;align-items:center;gap:14px;font-family:var(--display);font-weight:700;color:var(--slate)}
-.navband .with .x{color:var(--muted);font-weight:500}
-.navband .with .cp{font-size:1.25rem;letter-spacing:.02em}
-.navband nav{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--display);font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
-.navband nav a{color:var(--ink);text-decoration:none;padding-bottom:6px;border-bottom:3px solid transparent}
-.navband nav a:hover{border-color:var(--orange)}
+/* NAV */
+.nav{background:var(--cyan);color:#fff}
+.nav .in{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.35rem;letter-spacing:-.01em}
+.brand .x{font-weight:300;opacity:.8}
+.brand small{font-weight:400;font-size:.78rem;opacity:.85;margin-left:4px}
+.nav nav{display:flex;gap:26px;font-size:.92rem}
+.nav nav a{color:#fff;text-decoration:none;opacity:.9}
+.nav nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
 
-.hero{background:var(--slate);color:var(--on-dark);position:relative;overflow:hidden}
-.hero .in{padding-block:48px 40px;display:grid;gap:26px;position:relative}
-.hero h1{font-size:clamp(2rem,5.2vw,3.4rem);text-transform:uppercase;max-width:20ch}
-.hero h1 em{font-style:normal;color:var(--orange)}
-.hero .sub{max-width:60ch;color:var(--on-dark-muted);font-size:1.1rem}
-.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14)}
-.facts div{background:var(--slate);padding:16px}
-.facts b{display:block;font-family:var(--display);font-size:1.9rem;color:var(--on-dark);line-height:1.05}
-.facts span{font-size:.85rem;color:var(--on-dark-muted)}
-.sun{position:absolute;right:-60px;top:-60px;width:360px;opacity:.12;pointer-events:none}
-.sun circle,.sun line{fill:none;stroke:var(--orange);stroke-width:8}
+/* HERO */
+.hero{background:var(--cyan);color:#fff;position:relative;overflow:hidden}
+.hero .in{position:relative;z-index:1;padding-block:56px 96px;display:grid;gap:22px}
+.hero h1{font-size:clamp(2.1rem,5.6vw,3.9rem);font-weight:800;max-width:16ch;letter-spacing:-.01em}
+.hero h1 span{color:var(--yellow)}
+.hero p{max-width:54ch;font-size:1.1rem;font-weight:400}
+.hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+.blob{position:absolute;pointer-events:none}
+.blob.b1{right:-120px;top:-80px;width:520px}
+.blob.b2{right:140px;bottom:-140px;width:300px}
+.wave{display:block;width:100%;height:60px;margin-top:-59px;position:relative;z-index:2}
 
-section.s{padding-block:64px}
-section.s+section.s{border-top:1px solid var(--line)}
-.shead{display:grid;grid-template-columns:72px 1fr;gap:16px;margin-bottom:32px;align-items:start}
-.num{font-family:var(--display);font-size:3.2rem;color:var(--orange);line-height:.9;font-weight:700}
-.shead .lede{margin-top:10px}
+/* SECTIONS */
+section.s{padding-block:72px}
+section.peach{background:var(--orange-soft)}
+.head{margin-bottom:36px}
 
-/* Lecture */
-.read2{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:start}
-.story{display:grid;gap:14px}
-.story p{color:var(--ink)}
-.timeline{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:8px 20px}
-.tl{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:12px 0;border-bottom:1px dashed var(--line)}
-.tl:last-child{border-bottom:0}
-.tl .y{font-family:var(--mono);font-size:.8rem;color:var(--orange-ink);font-weight:500;padding-top:2px}
-.tl span{font-size:.94rem}
-.insight{margin-top:4px;background:var(--orange-soft);border-left:4px solid var(--orange);padding:14px 16px;border-radius:0 4px 4px 0;font-size:.98rem}
-.insight b{color:var(--orange-ink)}
+/* Quick wins */
+.wins{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.w{background:#fff;border-radius:22px;padding:24px;display:grid;gap:10px;align-content:start;box-shadow:0 2px 0 var(--line)}
+.w .ic{width:48px;height:48px;border-radius:50%;background:var(--orange);display:grid;place-items:center}
+.w .ic svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.w p{font-size:.95rem;color:var(--muted)}
+.w .time{font-size:.8rem;font-weight:600;color:var(--cyan-ink);background:var(--cyan-soft);border-radius:999px;padding:4px 12px;justify-self:start}
 
-/* Défis */
-.chal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.c{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:22px;display:grid;gap:12px;align-content:start;border-top:4px solid var(--orange)}
-.c .k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.c p{font-size:.95rem;color:var(--muted)}
-.c p b{color:var(--ink);font-weight:600}
-.c ul{margin:0;padding-left:18px;font-size:.93rem}
-.c li{margin-bottom:4px}
-.c .data{font-size:.82rem;font-family:var(--mono);color:var(--slate-2);background:var(--bg);padding:8px 10px;border-radius:3px}
+/* Big ideas */
+.ideas{display:grid;gap:18px}
+.idea{display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,.8fr);gap:24px;align-items:start;border:2px solid var(--cyan-soft);border-radius:26px;padding:26px}
+.idea .n{font-size:3.6rem;font-weight:800;color:var(--cyan);line-height:.9}
+.idea h3{font-size:1.3rem;margin-bottom:8px}
+.idea p{color:var(--muted);font-size:.97rem}
+.idea .gain{background:var(--yellow-soft);border-radius:18px;padding:16px 18px;font-size:.92rem}
+.idea .gain b{display:block;color:var(--orange-ink);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.idea .demo-link{display:inline-block;margin-top:10px;font-weight:600;color:var(--orange);text-decoration:none}
 
 /* Démo */
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:4px;overflow:hidden;min-width:0}
-.ph{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.chip{font-family:var(--mono);font-size:.68rem;padding:3px 8px;border-radius:99px;background:var(--orange-soft);color:var(--orange-ink);text-transform:uppercase;letter-spacing:.06em}
-.ctrls{display:flex;gap:18px;flex-wrap:wrap;padding:14px 16px;border-bottom:1px solid var(--line);font-size:.9rem;align-items:center}
-.ctrls label{display:flex;gap:8px;align-items:center}
-.ctrls input[type=range]{accent-color:var(--orange);width:140px}
-.seg{display:inline-flex;border:1px solid var(--line);border-radius:3px;overflow:hidden}
-.seg button{font:inherit;font-size:.85rem;border:0;background:#fff;padding:6px 12px;cursor:pointer;color:var(--ink)}
-.seg button[aria-pressed=true]{background:var(--slate);color:#fff}
+.panel{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 2px 0 var(--line)}
+.ph{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:16px 22px;background:var(--cyan);color:#fff;font-weight:500}
+.chip{font-size:.72rem;font-weight:600;padding:4px 12px;border-radius:999px;background:var(--yellow);color:var(--ink)}
+.ctrls{display:flex;gap:22px;flex-wrap:wrap;padding:16px 22px;border-bottom:1px solid var(--line);font-size:.92rem;align-items:center}
+.ctrls label{display:flex;gap:10px;align-items:center}
+.ctrls input[type=range]{accent-color:var(--orange);width:150px}
+.seg{display:inline-flex;border:2px solid var(--orange);border-radius:999px;overflow:hidden}
+.seg button{font:inherit;font-size:.85rem;font-weight:500;border:0;background:#fff;padding:6px 16px;cursor:pointer;color:var(--orange)}
+.seg button[aria-pressed=true]{background:var(--orange);color:#fff}
 .tw{overflow-x:auto}
-table.q{width:100%;border-collapse:collapse;font-size:.88rem;font-variant-numeric:tabular-nums;min-width:640px}
-table.q th{text-align:left;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;padding:10px 12px;border-bottom:1px solid var(--line);background:var(--bg)}
-table.q td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+table.q{width:100%;border-collapse:collapse;font-size:.88rem;font-variant-numeric:tabular-nums;min-width:680px}
+table.q th{text-align:left;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:12px 16px;border-bottom:1px solid var(--line)}
+table.q td{padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
 table.q tr:last-child td{border-bottom:0}
-.score{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.82rem}
-.meter{width:70px;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
-.meter i{display:block;height:100%}
-.act{font-size:.82rem;padding:3px 8px;border-radius:3px;white-space:nowrap;display:inline-block}
-.a-v{background:var(--bad-soft);color:var(--bad)} .a-s{background:var(--warn-soft);color:var(--warn)} .a-o{background:var(--ok-soft);color:var(--ok)}
+table.q td b{font-weight:600}
+.score{display:flex;align-items:center;gap:8px;font-weight:600;font-size:.85rem}
+.meter{width:72px;height:8px;background:#f1ebe7;border-radius:4px;overflow:hidden}
+.meter i{display:block;height:100%;border-radius:4px}
+.act{font-size:.8rem;font-weight:600;padding:4px 12px;border-radius:999px;white-space:nowrap;display:inline-block}
+.a-v{background:var(--bad-soft);color:var(--bad)} .a-s{background:var(--orange-soft);color:var(--orange-ink)} .a-o{background:var(--ok-soft);color:var(--ok)} .a-u{background:var(--cyan-soft);color:var(--cyan-ink)}
 .why{font-size:.8rem;color:var(--muted)}
-.sumr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border-top:1px solid var(--line)}
-.sumr div{background:var(--surface);padding:14px 16px}
-.sumr b{display:block;font-family:var(--display);font-size:1.5rem;line-height:1.1}
-.sumr span{font-size:.82rem;color:var(--muted)}
-.note{font-size:.82rem;color:var(--muted);margin-top:14px}
+.sumr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--orange-soft)}
+.sumr div{padding:16px 22px}
+.sumr b{display:block;font-size:1.6rem;font-weight:700;color:var(--orange);line-height:1.2}
+.sumr span{font-size:.84rem;color:var(--muted)}
+.note{font-size:.84rem;color:var(--muted);margin-top:16px;max-width:80ch}
 
 /* Méthode */
-.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--line);background:var(--surface);border-radius:4px;overflow:hidden}
-.step{padding:20px;border-right:1px solid var(--line);display:grid;gap:10px;align-content:start}
-.step:last-child{border-right:0}
-.step .when{font-family:var(--mono);font-size:.72rem;color:var(--orange);letter-spacing:.08em;text-transform:uppercase}
-.step p{font-size:.93rem;color:var(--muted)}
-.out{font-size:.85rem;background:var(--orange-soft);color:var(--orange-ink);padding:6px 10px;border-radius:3px;font-weight:600}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;counter-reset:st}
+.step{background:#fff;border-radius:22px;padding:24px;display:grid;gap:8px;align-content:start;box-shadow:0 2px 0 var(--line)}
+.step .when{font-size:.8rem;font-weight:600;color:var(--orange)}
+.step p{font-size:.94rem;color:var(--muted)}
+.step .out{font-size:.85rem;font-weight:600;color:var(--cyan-ink)}
 
-/* Refs */
-.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.ref{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:20px;display:grid;gap:8px;align-content:start}
-.ref .st2{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--orange-ink)}
+/* ceepia */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:36px;align-items:start}
+.refs{display:grid;gap:14px}
+.ref{border-left:4px solid var(--orange);padding:4px 0 4px 16px}
+.ref .st2{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--cyan-ink)}
 .ref p{font-size:.93rem;color:var(--muted)}
 
-.cta{background:var(--orange);color:#fff}
-.cta .in{padding-block:56px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px;align-items:center}
+/* CTA */
+.cta{background:var(--orange);color:#fff;position:relative;overflow:hidden}
+.cta .in{padding-block:64px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:36px;align-items:center;position:relative;z-index:1}
 .cta h2{color:#fff}
-.cta p{color:#fff;opacity:.95;max-width:56ch}
-.contact{background:#fff;color:var(--ink);border-radius:4px;padding:22px;display:grid;gap:6px}
-.contact b{font-family:var(--display);font-size:1.1rem}
-.contact span{font-size:.93rem;color:var(--muted)}
-.contact a{color:var(--orange-ink)}
-footer{padding-block:24px;font-size:.8rem;color:var(--muted)}
+.cta p{max-width:56ch;font-weight:400;margin-top:12px}
+.contact{background:#fff;color:var(--ink);border-radius:24px;padding:26px;display:grid;gap:4px}
+.contact b{font-size:1.15rem}
+.contact span{font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--orange);font-weight:500;text-decoration:none}
+.cta .blob{left:-90px;bottom:-120px;width:320px}
+footer{background:#3c3c3b;color:#d9d9d9;font-size:.82rem;padding-block:18px}
 
-@media (max-width:760px){
-  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .read2,.chal,.refs,.cta .in{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr}
-  .step{border-right:0;border-bottom:1px solid var(--line)}
-  .step:last-child{border-bottom:0}
-  .shead{grid-template-columns:1fr;gap:6px}
-  .num{font-size:2.4rem}
-  .navband nav{display:none}
+@media (max-width:820px){
+  .wins,.steps{grid-template-columns:1fr}
+  .idea{grid-template-columns:1fr;gap:12px}
+  .idea .n{font-size:2.6rem}
+  .about,.cta .in{grid-template-columns:1fr}
+  .nav nav{display:none}
   .sumr{grid-template-columns:1fr}
+  .blob.b1{width:340px;right:-160px}
+  .blob.b2{display:none}
 }
 </style>
 </head>
 <body>
-<div class="topband">Page préparée pour Jean-Baptiste Lenoir, cofondateur de Qotto, et son équipe technique</div>
-<div class="navband"><div class="in">
-  <div class="with"><span class="wm">ceepia</span><span class="x">×</span><span class="cp">Qotto</span></div>
-  <nav><a href="#lecture">Lecture</a><a href="#pistes">Pistes</a><a href="#demo">Démo</a><a href="#ceepia">Ceepia</a></nav>
+
+<div class="nav"><div class="in">
+  <div class="brand">Qotto <span class="x">×</span> ceepia <small>· groupe Izili</small></div>
+  <nav><a href="#rapide">Gains rapides</a><a href="#idees">Grandes idées</a><a href="#demo">Démo</a><a href="#suite">Contact</a></nav>
 </div></div>
 
-<header class="hero"><div class="in">
-  <svg class="sun" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="42"/><line x1="100" y1="10" x2="100" y2="40"/><line x1="100" y1="160" x2="100" y2="190"/><line x1="10" y1="100" x2="40" y2="100"/><line x1="160" y1="100" x2="190" y2="100"/><line x1="36" y1="36" x2="57" y2="57"/><line x1="143" y1="143" x2="164" y2="164"/><line x1="36" y1="164" x2="57" y2="143"/><line x1="143" y1="57" x2="164" y2="36"/></svg>
-  <span class="eyebrow">Qotto × Ceepia · novembre 2026</span>
-  <h1>Des milliers de petits paiements, <em>une seule lecture</em></h1>
-  <p class="sub">Un opérateur solaire en paiement à l'usage produit chaque jour une masse de données : paiements mobile money, télémétrie des kits, visites terrain, appels clients. Voici comment je lis Qotto, et les quatre endroits où l'IA pourrait aider vos équipes.</p>
-  <div class="facts">
-    <div><b>2016</b><span>création de Qotto</span></div>
-    <div><b>150 000+</b><span>personnes équipées d'après Izili</span></div>
-    <div><b>Bénin · Burkina</b><span>marchés historiques</span></div>
-    <div><b>Izili · BioLite</b><span>groupe d'appartenance depuis janvier 2026</span></div>
+<header class="hero">
+  <svg class="blob b1" viewBox="0 0 400 400" aria-hidden="true"><path fill="#f26522" d="M287 46c47 30 86 84 82 140-4 57-52 116-108 145-56 29-121 28-170-3S2 241 9 183c7-57 52-109 103-138 51-30 128-29 175 1z"/></svg>
+  <svg class="blob b2" viewBox="0 0 200 200" aria-hidden="true"><path fill="#ffc83d" d="M151 31c24 20 38 54 31 85-7 30-36 57-68 66s-67 0-88-23S-5 102 7 72 51 18 82 12s45-1 69 19z"/></svg>
+  <div class="in">
+    <span class="tag" style="color:#fff;opacity:.9">Préparé par ceepia · novembre 2026</span>
+    <h1>Ce que l'IA pourrait faire <span>pour Qotto</span></h1>
+    <p>Des paiements mobile money, des kits connectés, des agents terrain, des appels clients : vous avez déjà la matière. Voici des gains rapides, quelques grandes idées, et une démo pour se faire une idée concrète.</p>
+    <div class="cta-row"><a class="btn fill" href="#demo">Voir la démo</a><a class="btn white" href="#suite">En parler</a></div>
   </div>
-</div></header>
+</header>
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path fill="#fff2eb" d="M0 30 C 360 70 720 0 1080 30 S 1440 30 1440 30 V60 H0Z"/></svg>
 
 <main>
-<!-- 1. LECTURE -->
-<section class="s" id="lecture"><div class="in">
-  <div class="shead"><span class="num">01</span><div><span class="eyebrow">Ce que j'ai compris</span><h2>Qotto en quelques lignes</h2><p class="lede">À partir de sources publiques et de notre échange du 17 novembre. Corrigez-moi si je me trompe.</p></div></div>
-  <div class="read2">
-    <div class="story">
-      <p>Qotto installe des kits solaires modulaires chez des foyers ruraux d'Afrique de l'Ouest. Le client ne paie pas le kit d'un coup : il paie au fil de l'eau, par mobile money, et le kit connecté s'active ou se met en pause selon ses paiements.</p>
-      <p>Ce modèle fait de Qotto autant une société de crédit et de service qu'une société d'énergie. La marge dépend de trois choses : le taux de remboursement, le coût de chaque visite terrain et la durée de vie du matériel.</p>
-      <p>Depuis janvier 2026, Qotto fait partie d'Izili Group (ex-Baobab+, adossé à BioLite), qui opère dans six pays africains. Il faut donc aussi faire converger des outils, des données et des indicateurs entre deux structures.</p>
-      <div class="insight"><b>Ce que vous m'avez dit :</b> les chantiers actuels portent surtout sur l'analyse de données. Les données propres et bien reliées, c'est justement ce qu'il faut avant toute IA utile. Le travail que vous faites est le socle de ce qui suit.</div>
-    </div>
-    <div class="timeline">
-      <div class="tl"><span class="y">2016</span><span>Création de Qotto par Jean-Baptiste Lenoir et ses associés</span></div>
-      <div class="tl"><span class="y">2016-22</span><span>Développement au Bénin et au Burkina Faso, des centaines de commerciaux et techniciens terrain</span></div>
-      <div class="tl"><span class="y">2022</span><span>11 000 clients actifs, chiffre d'affaires en hausse de 50 % par an</span></div>
-      <div class="tl"><span class="y">2023</span><span>Série A de 8 M€ en capital et dette menée par IBL Group, cap sur la Côte d'Ivoire</span></div>
-      <div class="tl"><span class="y">2026</span><span>Rachat par Izili Group, majoritairement détenu par BioLite</span></div>
-    </div>
-  </div>
-</div></section>
-
-<!-- 2. PISTES -->
-<section class="s" id="pistes"><div class="in">
-  <div class="shead"><span class="num">02</span><div><span class="eyebrow">Défis techniques</span><h2>Quatre pistes où l'IA peut aider</h2><p class="lede">Ce sont des hypothèses. Je ne connais pas encore vos outils, et c'est précisément ce que j'aimerais comprendre avec votre CTO.</p></div></div>
-  <div class="chal">
-    <article class="c">
-      <span class="k">Recouvrement · risque</span>
-      <h3>Anticiper les impayés plutôt que les subir</h3>
-      <p>Un client qui va décrocher se voit souvent avant : paiements plus espacés, montants plus petits, kit moins utilisé. <b>Un score de risque mis à jour chaque jour</b> permet d'agir au bon moment, avec le bon geste.</p>
-      <span class="data">Données : historique mobile money, télémétrie IoT, profil du foyer</span>
+<!-- GAINS RAPIDES -->
+<section class="s peach" id="rapide"><div class="in">
+  <div class="head"><span class="tag">À portée de main</span><h2>Les gains rapides</h2><p class="lede">Des outils simples, montés en quelques semaines sur les données et les outils que vous avez déjà.</p></div>
+  <div class="wins">
+    <article class="w">
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span>
+      <h3>Un assistant WhatsApp pour les clients</h3>
+      <p>Solde restant, code de déblocage, panne simple : il répond tout de suite, en français et en langues locales, et passe la main à un conseiller pour le reste.</p>
+      <span class="time">3 à 4 semaines</span>
     </article>
-    <article class="c">
-      <span class="k">Terrain · logistique</span>
-      <h3>Envoyer l'agent là où il compte</h3>
-      <p>Chaque visite coûte cher en zone rurale. <b>Prioriser et regrouper les tournées</b> (relance, panne, extension de kit, vente) augmente ce que rapporte une journée d'agent.</p>
-      <span class="data">Données : géolocalisation clients, file des tickets, agenda des agents</span>
+    <article class="w">
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 12h10M4 19h7"/></svg></span>
+      <h3>Les appels du service client triés</h3>
+      <p>Chaque appel ou ticket résumé et classé par motif. Vous voyez enfin pourquoi les clients appellent, par pays et par semaine.</p>
+      <span class="time">2 à 3 semaines</span>
     </article>
-    <article class="c">
-      <span class="k">Service client</span>
-      <h3>Répondre vite, dans la bonne langue</h3>
-      <p>Code de déblocage, solde restant, panne simple : <b>un assistant sur WhatsApp ou au téléphone</b>, en français et en langues locales, traite les demandes courantes et passe la main à un humain pour le reste.</p>
-      <span class="data">Données : historique des appels et tickets, base de pannes connues</span>
+    <article class="w">
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+      <h3>La tournée du jour sur le téléphone de l'agent</h3>
+      <p>Chaque matin, une liste de visites priorisée et regroupée par village, avec le motif de chaque passage.</p>
+      <span class="time">3 semaines</span>
     </article>
-    <article class="c">
-      <span class="k">Données · groupe</span>
-      <h3>Un reporting commun Qotto et Izili</h3>
-      <p>Deux systèmes, plusieurs pays, des définitions qui ne coïncident pas toujours (client actif, taux de remboursement…). <b>Harmoniser les indicateurs</b> et laisser les équipes interroger les données en langage naturel.</p>
-      <span class="data">Données : exports CRM et PAYG des deux entités, référentiels pays</span>
+    <article class="w">
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span>
+      <h3>Les dossiers de vente vérifiés</h3>
+      <p>Photo floue, pièce manquante, numéro mobile money incohérent : repéré au moment de la saisie, pas trois semaines plus tard.</p>
+      <span class="time">2 à 3 semaines</span>
+    </article>
+    <article class="w">
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span>
+      <h3>Interroger vos chiffres en français</h3>
+      <p>« Combien de clients actifs au Burkina ce mois-ci ? » La réponse, le tableau et le graphique, sans attendre l'équipe data.</p>
+      <span class="time">3 à 4 semaines</span>
+    </article>
+    <article class="w">
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H5.2L4 17.5z"/><path d="M8 9h8M8 12h5"/></svg></span>
+      <h3>Les SMS de relance personnalisés</h3>
+      <p>Le bon ton selon le profil et l'historique du client, au lieu du même message pour tout le monde.</p>
+      <span class="time">2 semaines</span>
     </article>
   </div>
 </div></section>
 
-<!-- 3. DÉMO -->
-<section class="s" id="demo"><div class="in">
-  <div class="shead"><span class="num">03</span><div><span class="eyebrow">Démo</span><h2>La file de relances du jour</h2><p class="lede">Un exemple de ce que donnerait la piste n°1 : le système lit les signaux de chaque client et propose une action. Les données sont fictives, la logique est celle qu'on construirait sur les vôtres.</p></div></div>
+<!-- GRANDES IDÉES -->
+<section class="s" id="idees"><div class="in">
+  <div class="head"><span class="tag">Plus structurant</span><h2>Les grandes idées</h2><p class="lede">Des projets plus ambitieux, qui touchent directement à la marge d'un opérateur en paiement à l'usage.</p></div>
+  <div class="ideas">
+    <article class="idea">
+      <span class="n">01</span>
+      <div><h3>Anticiper les impayés plutôt que les subir</h3><p>Un client qui va décrocher se voit souvent avant : paiements plus espacés, montants plus petits, kit moins utilisé. Un score de risque recalculé chaque jour à partir des paiements et de la télémétrie dit à qui envoyer un SMS, qui appeler et chez qui passer.</p><a class="demo-link" href="#demo">Voir la démo →</a></div>
+      <div class="gain"><b>Ce que ça change</b>Moins de kits verrouillés qui ne reviennent jamais, des agents qui passent leur journée là où ça compte.</div>
+    </article>
+    <article class="idea">
+      <span class="n">02</span>
+      <div><h3>La maintenance prédictive des kits</h3><p>Les kits connectés remontent des données en continu. Une batterie qui faiblit, un panneau qui produit moins : on les repère avant la panne et on planifie l'intervention pendant une tournée déjà prévue.</p></div>
+      <div class="gain"><b>Ce que ça change</b>Moins de déplacements dédiés, des kits qui durent plus longtemps, des clients qui continuent de payer.</div>
+    </article>
+    <article class="idea">
+      <span class="n">03</span>
+      <div><h3>Le bon produit au bon client</h3><p>Repérer les foyers prêts pour une extension (télé, réfrigérateur, cuisson propre avec BioLite) à partir de leur historique de paiement et d'usage, et donner la liste aux agents.</p></div>
+      <div class="gain"><b>Ce que ça change</b>Des ventes additionnelles à des clients qui ont déjà prouvé qu'ils remboursent.</div>
+    </article>
+    <article class="idea">
+      <span class="n">04</span>
+      <div><h3>Une seule lecture des données Qotto et Izili</h3><p>Deux systèmes, six pays, des définitions qui ne coïncident pas toujours (client actif, taux de remboursement…). Un socle de données commun avec des indicateurs harmonisés, que chaque équipe peut interroger.</p></div>
+      <div class="gain"><b>Ce que ça change</b>Un pilotage groupe sur des chiffres comparables, et la base de toutes les autres idées.</div>
+    </article>
+  </div>
+</div></section>
+
+<!-- DÉMO -->
+<section class="s peach" id="demo"><div class="in">
+  <div class="head"><span class="tag">Démo</span><h2>La file de relances du jour</h2><p class="lede">La grande idée n°1 en pratique : le système lit les signaux de chaque client et propose une action. Les données sont fictives. La logique est celle qu'on construirait sur les vôtres.</p></div>
   <div class="panel">
-    <div class="ph"><span>Portefeuille · zone de Parakou (fictif)</span><span class="chip">Données simulées</span></div>
+    <div class="ph"><span>Portefeuille · zone de Parakou</span><span class="chip">Données fictives</span></div>
     <div class="ctrls">
-      <label>Visites possibles aujourd'hui <input type="range" id="cap" min="1" max="5" value="2"><b id="capv" class="mono">2</b></label>
+      <label>Visites possibles aujourd'hui <input type="range" id="cap" min="1" max="5" value="2"><b id="capv">2</b></label>
       <span class="seg" role="group" aria-label="Tri"><button data-sort="risk" aria-pressed="true">Par risque</button><button data-sort="value" aria-pressed="false">Par encours</button></span>
     </div>
     <div class="tw"><table class="q">
@@ -238,47 +252,49 @@ footer{padding-block:24px;font-size:.8rem;color:var(--muted)}
       <div><b id="s3">0 FCFA</b><span>encours couvert par une action</span></div>
     </div>
   </div>
-  <p class="note">Le score ici est une règle simple pour la démonstration. En vrai, on l'apprend sur l'historique de remboursement de Qotto et on vérifie qu'il prédit mieux que les règles actuelles avant de s'en servir.</p>
+  <p class="note">Ici, le score est une règle simple pour la démonstration. En vrai, on l'apprend sur votre historique de remboursement, et on vérifie qu'il prédit mieux que les règles actuelles avant de s'en servir.</p>
 </div></section>
 
-<!-- 4. MÉTHODE -->
+<!-- MÉTHODE -->
 <section class="s"><div class="in">
-  <div class="shead"><span class="num">04</span><div><span class="eyebrow">Comment on travaille</span><h2>Petit, mesurable, sur vos données</h2></div></div>
+  <div class="head"><span class="tag">Comment on travaille</span><h2>Petit, mesurable, sur vos données</h2></div>
   <div class="steps">
-    <div class="step"><span class="when">Semaine 1</span><h3>Comprendre</h3><p>Un échange avec votre CTO pour voir vos outils, vos données et ce qui coince vraiment.</p><span class="out">Un cas d'usage choisi</span></div>
-    <div class="step"><span class="when">Semaines 2 à 4</span><h3>Prototyper</h3><p>Un prototype sur un extrait réel de vos données, avec un indicateur de réussite fixé dès le départ.</p><span class="out">Un résultat chiffré</span></div>
-    <div class="step"><span class="when">Ensuite</span><h3>Déployer</h3><p>Si ça marche, on l'installe dans vos outils et on forme les équipes. Sinon, on s'arrête là.</p><span class="out">Un outil utilisé</span></div>
+    <div class="step"><span class="when">Semaine 1</span><h3>Comprendre</h3><p>Un échange avec votre CTO pour voir vos outils, vos données et ce qui coince vraiment.</p><span class="out">→ un cas d'usage choisi</span></div>
+    <div class="step"><span class="when">Semaines 2 à 4</span><h3>Prototyper</h3><p>Un prototype sur un extrait réel de vos données, avec un indicateur de réussite fixé dès le départ.</p><span class="out">→ un résultat chiffré</span></div>
+    <div class="step"><span class="when">Ensuite</span><h3>Déployer</h3><p>Si ça marche, on l'installe dans vos outils et on forme les équipes. Sinon, on s'arrête là.</p><span class="out">→ un outil vraiment utilisé</span></div>
   </div>
 </div></section>
 
-<!-- 5. CEEPIA -->
-<section class="s" id="ceepia"><div class="in">
-  <div class="shead"><span class="num">05</span><div><span class="eyebrow">Qui sommes-nous</span><h2>Ceepia, en quelques projets</h2><p class="lede">Ceepia aide les entreprises à résoudre des défis techniques concrets avec des outils d'IA sur mesure, puis forme les équipes qui les utilisent. Par discrétion, nos clients sont cités sans leur nom.</p></div></div>
+<!-- CEEPIA -->
+<section class="s peach"><div class="in about">
+  <div><span class="tag">Qui sommes-nous</span><h2>ceepia</h2><p class="lede">ceepia relève les défis techniques des entreprises avec des outils d'IA sur mesure, puis forme les équipes qui les utilisent. Par discrétion, nos clients sont cités sans leur nom.</p></div>
   <div class="refs">
-    <div class="ref"><span class="st2">Industrie · démo faite, déploiement T1 2027</span><h3>Planification branchée sur l'ERP</h3><p>Fabricant de produits gonflables, filiale d'un grand groupe : un outil commun au bureau d'études, à la planification et au commerce, sans sortir les équipes de leur ERP.</p></div>
-    <div class="ref"><span class="st2">Recouvrement · en cours</span><h3>Relance automatisée des impayés</h3><p>Un outil de relance graduée et de suivi des encours, testé sur de vrais dossiers de recouvrement avant déploiement.</p></div>
-    <div class="ref"><span class="st2">Plasturgie · en cours</span><h3>Audit du chiffrage des devis</h3><p>Plasturgiste de 60 personnes sur 2 sites : 5 à 30 devis par mois, 1 à 3 semaines de délai, deux chiffreurs pour le moule et le prix pièce.</p></div>
-    <div class="ref"><span class="st2">Formation · réalisé</span><h3>Formations IA en entreprise</h3><p>Formations livrées chez Stellantis et dans plusieurs cabinets, prises en charge par les OPCO grâce à notre partenaire certifié Qualiopi.</p></div>
+    <div class="ref"><span class="st2">Industrie · déploiement T1 2027</span><h3>Planification branchée sur l'ERP</h3><p>Fabricant de produits gonflables, filiale d'un grand groupe : un outil commun au bureau d'études, à la planification et au commerce.</p></div>
+    <div class="ref"><span class="st2">Recouvrement · en cours</span><h3>Relance automatisée des impayés</h3><p>Relance graduée et suivi des encours, testés sur de vrais dossiers de recouvrement avant déploiement.</p></div>
+    <div class="ref"><span class="st2">Plasturgie · en cours</span><h3>Audit du chiffrage des devis</h3><p>Plasturgiste de 60 personnes sur 2 sites : réduire un délai de devis de 1 à 3 semaines.</p></div>
+    <div class="ref"><span class="st2">Formation · réalisé</span><h3>Formations IA en entreprise</h3><p>Formations livrées chez Stellantis et dans plusieurs cabinets.</p></div>
   </div>
 </div></section>
 </main>
 
-<section class="cta" id="suite"><div class="in">
-  <div style="display:grid;gap:14px">
-    <span class="eyebrow" style="color:#fff;opacity:.85">Et maintenant ?</span>
-    <h2>Un échange de 20 minutes avec votre CTO</h2>
-    <p>Ce que j'aime faire avec Ceepia, c'est prendre un vrai problème technique et le résoudre avec les bons outils d'IA. Qotto en a de très intéressants. Je serais ravi d'en parler avec votre équipe, sans engagement.</p>
+<section class="cta" id="suite">
+  <svg class="blob" viewBox="0 0 200 200" aria-hidden="true"><path fill="#ffc83d" opacity=".55" d="M151 31c24 20 38 54 31 85-7 30-36 57-68 66s-67 0-88-23S-5 102 7 72 51 18 82 12s45-1 69 19z"/></svg>
+  <div class="in">
+    <div>
+      <h2>20 minutes avec votre CTO ?</h2>
+      <p>Ce que j'aime faire avec ceepia, c'est prendre un vrai problème technique et le résoudre avec les bons outils d'IA. Qotto en a de très intéressants. Je serais ravi d'en parler avec votre équipe, sans engagement.</p>
+    </div>
+    <div class="contact">
+      <b>Georges-Étienne Florentin</b>
+      <span>Fondateur, ceepia · ESSEC</span>
+      <span>07 52 02 65 22</span>
+      <span><a href="mailto:getflorentin@ceepia.com">getflorentin@ceepia.com</a></span>
+      <span><a href="https://ceepia.com">ceepia.com</a></span>
+    </div>
   </div>
-  <div class="contact">
-    <b>Georges-Étienne Florentin</b>
-    <span>Fondateur, Ceepia · ESSEC</span>
-    <span class="mono">07 52 02 65 22</span>
-    <span class="mono"><a href="mailto:getflorentin@ceepia.com">getflorentin@ceepia.com</a></span>
-    <span class="mono"><a href="https://ceepia.com">ceepia.com</a></span>
-  </div>
-</div></section>
+</section>
 
-<footer><div class="in">Page préparée par Ceepia pour Qotto. Informations issues de sources publiques : CIO Mag (février 2023), TechCrunch (février 2023), Tech In Africa et communiqués Izili (janvier 2026). Démo sur données fictives.</div></footer>
+<footer><div class="in">Page préparée par ceepia pour Qotto (groupe Izili), à partir d'informations publiques. Ce n'est pas un document de Qotto ou d'Izili. Démo sur données fictives.</div></footer>
 
 <script>
 const C=[
@@ -297,18 +313,17 @@ const fmt=n=>n.toLocaleString('fr-FR')+' FCFA';
 function render(){
   const cap=+document.getElementById('cap').value;document.getElementById('capv').textContent=cap;
   const list=[...C].sort((a,b)=>sort==='risk'?b.r-a.r:b.enc-a.enc);
-  // visits: highest-priority clients needing a visit (offline kit or high risk), up to capacity
   const byNeed=[...C].sort((a,b)=>(b.r+(b.offline?30:0))-(a.r+(a.offline?30:0)));
   const visit=new Set(byNeed.filter(c=>c.r>=45||c.offline).slice(0,cap));
   let v=0,s=0,cov=0;
   document.getElementById('rows').innerHTML=list.map(c=>{
     let a,cls,why;
     if(visit.has(c)){a='Visite terrain';cls='a-v';v++;cov+=c.enc;why=c.offline?'Kit hors ligne : vérifier une panne ou un vol avant de relancer.':'Risque élevé : passer voir le client avant que la dette ne grossisse.';}
-    else if(c.upsell){a='Proposer l\'extension';cls='a-o';why='Bon payeur qui demande plus : une vente à faire lors d\'une tournée.';}
+    else if(c.upsell){a='Proposer l\'extension';cls='a-u';why='Bon payeur qui demande plus : une vente à faire pendant une tournée.';}
     else if(c.r>=20||c.offline){a='SMS + appel';cls='a-s';s++;cov+=c.enc;why=c.offline?'Pas de visite possible aujourd\'hui : appel pour qualifier la panne.':c.r>=45?'Risque élevé, mais plus de visite disponible : appel en priorité.':'Signal faible : un rappel suffit souvent.';}
     else {a='Rien à faire';cls='a-o';why='Client à jour.';}
-    const col=c.r>=60?'var(--bad)':c.r>=30?'var(--warn)':'var(--ok)';
-    return `<tr><td><b>${c.n}</b></td><td>${c.sig.map(x=>'<div class="why">'+x+'</div>').join('')}</td><td><span class="score"><span class="meter"><i style="width:${c.r}%;background:${col}"></i></span>${c.r}</span></td><td class="mono">${fmt(c.enc)}</td><td><span class="act ${cls}">${a}</span><div class="why">${why}</div></td></tr>`;
+    const col=c.r>=60?'var(--bad)':c.r>=30?'var(--orange)':'var(--ok)';
+    return `<tr><td><b>${c.n}</b></td><td>${c.sig.map(x=>'<div class="why">'+x+'</div>').join('')}</td><td><span class="score"><span class="meter"><i style="width:${c.r}%;background:${col}"></i></span>${c.r}</span></td><td>${fmt(c.enc)}</td><td><span class="act ${cls}">${a}</span><div class="why">${why}</div></td></tr>`;
   }).join('');
   document.getElementById('s1').textContent=v;document.getElementById('s2').textContent=s;document.getElementById('s3').textContent=fmt(cov);
 }

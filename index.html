@@ -323,7 +323,7 @@ function render(){
     else if(c.r>=20||c.offline){a='SMS + appel';cls='a-s';s++;cov+=c.enc;why=c.offline?'Pas de visite possible aujourd\'hui : appel pour qualifier la panne.':c.r>=45?'Risque élevé, mais plus de visite disponible : appel en priorité.':'Signal faible : un rappel suffit souvent.';}
     else {a='Rien à faire';cls='a-o';why='Client à jour.';}
     const col=c.r>=60?'var(--bad)':c.r>=30?'var(--orange)':'var(--ok)';
-    return `<tr><td><b>${c.n}</b></td><td>${c.sig.map(x=>'<div class="why">'+x+'</div>').join('')}</td><td><span class="score"><span class="meter"><i style="width:${c.r}%;background:${col}"></i></span>${c.r}</span></td><td>${fmt(c.enc)}</td><td><span class="act ${cls}">${a}</span><div class="why">${why}</div></td></tr>`;
+    return `<tr><td><b>${c.n}</b></td><td>${c.sig.map(x=>'<div class="why">'+x+'</div>').join('')}</td><td><span class="score"><span class="meter"><i style="width:${c.r}%;background:${col}"></i></span>${c.r}</span></td><td style="white-space:nowrap">${fmt(c.enc)}</td><td><span class="act ${cls}">${a}</span><div class="why">${why}</div></td></tr>`;
   }).join('');
   document.getElementById('s1').textContent=v;document.getElementById('s2').textContent=s;document.getElementById('s3').textContent=fmt(cov);
 }
